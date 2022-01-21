@@ -17,64 +17,59 @@
 <body>
     <!-- Navigation (Sits on top) -->
   <%- include('partials/nav') %> 
-  <div class="container" action="/">
-    <img class="bg-image" src="/media/bd_2.jpg" alt="" srcset="">
-    <div class="header">
-  
-      <h1>CHARITABLE</h1>
-      <h2> Trusted fundraising for all of life's moments </h2>
-      <h3>Get help. Give kindness. Start in just 5 minutes.</h3> 
-      <!-- <img src="/media/bd_2.jpg"> -->
-      <!-- <img src="public/1634218475818--firewatch.jpg"> -->
-      <a href="/registerUser"><button class="registerBtn">START A CHARITY DRIVE</button></a>
-      <!-- <a href="/registerOrg"><button class="registerBtn">Organization</button></a> -->
-    </div>
-    </div>
 
     <div class="charity-section">
-      <h1>Current Drives</h1>
+      <h1>Approved Requests</h1>
     <div class="detkails">
       
         <% if(posts.length > 0 ){ %> 
         <% posts.map((post)=>{  %> 
           <div class="main">
             <div class="donation-card">
-              <a href="/<%= post._id %>">
-               <img class="img-index" src="/media/<%= post.image %> "> 
+              <a href="/<%= post._id %>" >
+               <img src="/media/<%= post.image %> "> 
                 <p><%= post.title %> </p>
                 <p><%= post.desc %> </p>
                 <p>Funds target : <%= post.amount %> </p>
-               </a>
-                <div class="buttons">
-                  <button class="registerBtn">Share</button>
-                  <a class="payBtn" href="/pay"><button class="registerBtn">Donate</button></a>
+                
+              </a>
+                <div class="buttns">
+                    <a class="delete" data-doc="<%= post._id %>">
+                      <button class="registerBtn del"> DELETE </button>
+                    </a>
                 </div>
-            </div> 
-        
-          <img class="qrpic" src="/media/qr.png" alt="">
-           <!-- QR GEN -->
-          <!-- <img src=<d%=qr_code[0] %> alt="QR Code"> -->
-          </div>
-        </div>
+              </div>
+                <img class="qrpic" src="/media/qr.png" alt="">
+                 <!-- QR GEN -->
+                <!-- <img src=<d%=qr_code[0] %> alt="QR Code"> -->
+              </div>
+                <!-- QR GEN -->
+                <!-- <img src=<d%=qr_code[0] %> alt="QR Code"> -->
+                 
+  
+        <!-- <a href="/lol" role="button" class="btn btn-primary">Back</a> -->
+    
+            <!-- </div>  -->
             <% })}else { %>  
-            <h3>No charity drives available </h3>
+            <h3>No Approved Posts </h3>
           <% } %> 
 
     </div>
     </div>
-    <div class="footer">
+    <!-- <div class="footer">
       <h4>“ When a person dies, all their deeds end except three:
         a continuing charity, beneficial knowledge and a 
         child who prays for them ”</h4>  
-    </div>
+    </div> -->
   
   <style>
     h1{
         text-align: center;
     }
     .details{
+      
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
         margin-bottom: 5%;
@@ -83,15 +78,14 @@
 .registerBtn{
   margin-bottom: 7%;
 }
-       /* img{
+       img{
          width: 100%;
-       } */
+       }
     .donation-card{
-      
+        
         text-align: center;
         background-color: white;
-        width: 29%;
-       
+        width: 27%;
         margin-top: 5%;
         margin-left: auto;
         border-radius: 25px;
@@ -103,19 +97,19 @@
     
     .buttons{
         display: flex;
-        justify-content:space-evenly ;
+        justify-content: center;
     }
     button{
     margin-top: 3%;
     border-radius: 20px;
-	  border: 1px solid #FF4B2B;
-	  background-color: #FF4B2B;
-	  color: #FFFFFF;
-	  font-size: 12px;
-	  font-weight: bold;
-	  padding: 8px 20px;
-	  letter-spacing: 1px;
-	  text-transform: uppercase;
+	border: 1px solid #FF4B2B;
+	background-color: #a50a0a;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 8px 20px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
     margin-left: 5%;
     margin-right: 5%;
 }
@@ -131,24 +125,21 @@ button.ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
 }
-.img-index{
- width: 100%;
-}
+
 .main{
- 
+  
   display: flex;
   
 }
 .qrpic{
   
-  width: 11%;
-  height: 11%;
+  
+  width: 10%;
+  height: 10%;
   margin: auto;
   margin-left: 0;
 }
-.payBtn{
-  margin-right: 8%;
-}
 </style>
+<script src="/script.js"></script>
 </body>
 </html>

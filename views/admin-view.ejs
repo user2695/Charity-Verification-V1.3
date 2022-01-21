@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charity Verification</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <title>Charitable|Admin Dashboard</title>
+  <link rel="stylesheet" href="/styles/index.css">
+</head>
+<body>
+    <!-- Navigation (Sits on top) -->
+  <%- include('partials/nav') %> 
+
+    <div class="charity-section">
+     <div class="admin-heading">
+      <h1><a href="">Approval Requests</a></h1> 
+      <h1 class="approved"><a href="/approved">Already Approved</a></h1>
+     </div>
+    <div class="details">
+        <% if(posts.length > 0 ){ %> 
+            <% posts.map((post)=>{  %> 
+                <div class="donation-card">
+                  <a href="admin-login/to-approve/<%= post._id %>"  class="single">
+                   <img src="/media/<%= post.image %> "> 
+                    <p><%= post.title %> </p>
+                    <p><%= post.desc %> </p>
+                    <p>Funds target : <%= post.amount %> </p>
+                    <div class="buttons">
+                        <button style="margin-right: 60px;" href="/admin-login/to-approve/<%= post._id %>" class="registerBtn">Approve</button>
+                        <a class="delete"style="margin-right: 40px;" data-doc="<%= post._id %>"><button class="registerBtn del" style="background-color: red;"> Delete </button></a>
+                        <button  href="/admin-login/to-approve/<%= post._id %>" class="registerBtn">Details</button>
+                      
+                    </div></a>
+                </div> 
+                <% })}else { %>  
+                <h3>No approval requests </h3>
+              <% } %> 
+
+    </div>
+    </div>
+    <div class="footer">
+      <h4>“ When a person dies, all their deeds end except three:
+        a continuing charity, beneficial knowledge and a 
+        child who prays for them ”</h4>  
+    </div>
+  
+  <style>
+    h1{
+        text-align: center;
+    }
+    .details{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5%;
+}
+
+.registerBtn{
+  margin-bottom: 7%;
+}
+       img{
+         width: 100%;
+       }
+    .donation-card{
+    
+        text-align: center;
+        background-color: white;
+        width: 35%;
+        margin: auto;
+        margin-top: 5%;
+        border-radius: 25px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+                    0 10px 10px rgba(0,0,0,0.22);
+    }
+    
+    .buttons{
+        display: flex;
+        justify-content: center;
+    }
+    button{
+    margin-top: 3%;
+    border-radius: 20px;
+    border: 1px solid #FF4B2B;
+    background-color: #FF4B2B;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+</style>
+<script src="/script.js"></script>
+</body>
+</html>
